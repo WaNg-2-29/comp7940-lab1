@@ -21,6 +21,8 @@ def main():
 # on different commands - answer in Telegram
 	dispatcher.add_handler(CommandHandler("add", add))
 	dispatcher.add_handler(CommandHandler("help", help_command))
+	dispatcher.add_handler(CommandHandler("hello", hello_command))
+
 # To start the bot:
 	updater.start_polling()
 	updater.idle()
@@ -31,11 +33,10 @@ def echo(update, context):
 	context.bot.send_message(chat_id=update.effective_chat.id, text= reply_message)
 # Define a few command handlers. These usually take the two arguments update and
 # context. Error handlers also receive the raised TelegramError object in error.
-def help_command(update: Update, context: CallbackContext) -> None:
-	update.message.reply_text('Helping you helping you.')
 def hello_command(update: Update, context: CallbackContext) -> None:
 	update.message.reply_text('Good day, Kevin!')
-
+def help_command(update: Update, context: CallbackContext) -> None:
+	update.message.reply_text('Helping you helping you.')
 def add(update: Update, context: CallbackContext) -> None:
 	try:
 		global redis1
